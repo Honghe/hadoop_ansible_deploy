@@ -1,0 +1,13 @@
+---
+
+- name: Install Java
+  yum:
+    name: java-1.8.0-openjdk-devel.x86_64
+    state: present
+
+- name: Configure JAVA_HOME
+  copy:
+    content: |
+      export JAVA_HOME=/etc/alternatives/java_sdk
+    dest: /etc/profile.d/java.sh
+    backup: yes

@@ -1,0 +1,51 @@
+---
+
+- name: Download Hadoop 3.0.0
+# 下载出错有没重试的方法
+  unarchive:
+    src: http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz
+    dest: /opt
+    remote_src: yes
+    creates: "{{ hadoop_src }}"
+
+- name: Configure HADOOP_HOME
+  copy:
+    content: |
+      export HADOOP_HOME=/opt/hadoop-3.0.0
+      export PATH=${HADOOP_HOME}/bin:$PATH
+    dest: /etc/profile.d/hadoop.sh
+    backup: yes
+
+- name: Config Hadoop etc/hadoop
+  copy:
+    src: ../templates/etc/hadoop/
+    dest: "{{ hadoop_src }}/etc/hadoop/"
+    backup: yes
+
+- name: Config Hadoop sbin/start-dfs.sh
+  blockinfile:
+    insertafter: "^#!"
+    block: "{{ lookup('file', '../templates/sbin/start-dfs.sh') }}"
+    path: "{{ hadoop_src }}/sbin/start-dfs.sh"
+    backup: yes
+
+- name: Config Hadoop sbin/stop-dfs.sh
+  blockinfile:
+    insertafter: "^#!"
+    block: "{{ lookup('file', '../templates/sbin/stop-dfs.sh') }}"
+    path: "{{ hadoop_src }}/sbin/stop-dfs.sh"
+    backup: yes
+
+- name: Config Hadoop sbin/start-yarn.sh
+  blockinfile:
+    insertafter: "^#!"
+    block: "{{ lookup('file', '../templates/sbin/start-yarn.sh') }}"
+    path: "{{ hadoop_src }}/sbin/start-yarn.sh"
+    backup: yes
+
+- name: Config Hadoop sbin/stop-yarn.sh
+  blockinfile:
+    insertafter: "^#!"
+    block: "{{ lookup('file', '../templates/sbin/stop-yarn.sh') }}"
+    path: "{{ hadoop_src }}/sbin/stop-yarn.sh"
+    backup: yes

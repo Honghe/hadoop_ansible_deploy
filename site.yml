@@ -1,0 +1,24 @@
+---
+
+#- name: Push ssh key
+#  hosts: hadoop
+#  roles:
+#    - push_key
+
+- name: Stop firewall
+  hosts: hadoop
+
+- name: Install Java
+  hosts: hadoop
+  roles:
+    - java
+
+- name: Set hostname
+  hosts: hadoop
+  roles:
+    - hostname
+
+- name: Download and Config Hadoop
+  hosts: hadoop
+  roles:
+    - hadoop_pkg
