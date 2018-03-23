@@ -1,15 +1,10 @@
 ---
 
-- name: Delete Hadoop
-  file:
-    path: "{{ hadoop_src }}"
-    state: absent
-
-- name: Download Hadoop 3.0.0
-  unarchive:
-    src: http://p61og6vza.bkt.clouddn.com/hadoop-3.0.0_isa.tar.gz
-    dest: /opt
-    remote_src: yes
+#- name: Download Hadoop 3.0.0
+#  unarchive:
+#    src: http://p61og6vza.bkt.clouddn.com/hadoop-3.0.0_isa.tar.gz
+#    dest: /opt
+#    remote_src: yes
 #    creates: "{{ hadoop_src }}"
 
 # Why copy not work, use build local instead
@@ -19,13 +14,13 @@
 #    dest: /usr/lib/
 #    remote_src: yes
 
-- name: Configure HADOOP_HOME
-  copy:
-    content: |
-      export HADOOP_HOME=/opt/hadoop-3.0.0
-      export PATH=${HADOOP_HOME}/bin:$PATH
-    dest: /etc/profile.d/hadoop.sh
-    backup: yes
+#- name: Configure HADOOP_HOME
+#  copy:
+#    content: |
+#      export HADOOP_HOME=/opt/hadoop-3.0.0
+#      export PATH=${HADOOP_HOME}/bin:$PATH
+#    dest: /etc/profile.d/hadoop.sh
+#    backup: yes
 
 - name: Config Hadoop etc/hadoop
   copy:

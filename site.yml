@@ -20,7 +20,7 @@
 #  roles:
 #    - hostname
 
-#- name: Download and Config Hadoop
-#  hosts: hadoop
-#  roles:
-#    - hadoop_pkg
+- name: Download and Config Hadoop
+  hosts: hadoop
+  roles:
+    - hadoop_pkg
