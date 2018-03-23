@@ -1,12 +1,23 @@
 ---
 
+- name: Delete Hadoop
+  file:
+    path: "{{ hadoop_src }}"
+    state: absent
+
 - name: Download Hadoop 3.0.0
-# 下载出错有没重试的方法
   unarchive:
-    src: http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.0.0/hadoop-3.0.0.tar.gz
+    src: http://p61og6vza.bkt.clouddn.com/hadoop-3.0.0_isa.tar.gz
     dest: /opt
     remote_src: yes
-    creates: "{{ hadoop_src }}"
+#    creates: "{{ hadoop_src }}"
+
+# Why copy not work, use build local instead
+#- name: Download isa-l
+#  unarchive:
+#    src: http://p61og6vza.bkt.clouddn.com/libisal_2.0.21.tar.gz
+#    dest: /usr/lib/
+#    remote_src: yes
 
 - name: Configure HADOOP_HOME
   copy:
