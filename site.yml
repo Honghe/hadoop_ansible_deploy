@@ -1,9 +1,16 @@
 ---
 
-#- name: Push ssh key
-#  hosts: hadoop
-#  roles:
-#    - push_key
+- name: Set hostname
+  strategy: debug
+  gather_facts: no
+  hosts: hadoop
+  roles:
+    - hostname
+
+- name: ssh-copy-id from Namenode to others
+  hosts: namenode
+  roles:
+    - ssh_copy_id
 
 - name: Stop firewall
   hosts: hadoop
@@ -14,13 +21,8 @@
 #  hosts: hadoop
 #  roles:
 #    - java
-#
-#- name: Set hostname
+
+#- name: Download and Config Hadoop
 #  hosts: hadoop
 #  roles:
-#    - hostname
-
-- name: Download and Config Hadoop
-  hosts: hadoop
-  roles:
-    - hadoop_pkg
+#    - hadoop_pkg

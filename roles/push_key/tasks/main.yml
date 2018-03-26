@@ -1,8 +1,0 @@
----
-
-- name: Push ssh key to whole cluster hosts (仍有问题? https://github.com/ansible/ansible/issues/29693, 用法好像有问题：http://www.cnblogs.com/amosli/p/6122908.html)
-  authorized_key:
-    user: root
-    state: present
-    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
-  delegate_to: "{{ inventory_hostname }}"
