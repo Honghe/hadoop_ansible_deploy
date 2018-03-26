@@ -32,3 +32,6 @@ cd isa-l/
 make -j 8
 make install
 cd ..
+
+# insure
+ldconfig
