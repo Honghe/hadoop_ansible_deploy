@@ -7,7 +7,7 @@ Only for CentOS 7 target host now.
 - [ ] download built isa-l tar instead of build isa-l on each node.(ldconfig)
 - [ ] check `hadoop checknative -a` on each node.
 - [ ] ntp
-- [ ] 
+- [ ] Reconstruct namenode hardcode
 
 ## Manual
 1. Modify hosts
