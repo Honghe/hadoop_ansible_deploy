@@ -4,19 +4,27 @@
         <value>yarn</value>
     </property>
     <property>
-        <name>mapred.tasktracker.map.tasks.maximum</name>
+        <name>mapreduce.tasktracker.map.tasks.maximum</name>
         <value>15</value>
         <description>The maximum number of map tasks that will be run simultaneously by a task tracker.</description>
     </property>
     <property>
-        <name>mapred.tasktracker.reduce.tasks.maximum</name>
+        <name>mapreduce.tasktracker.reduce.tasks.maximum</name>
         <value>15</value>
         <description>The maximum number of reduce tasks that will be run simultaneously by a task tracker.</description>
     </property>
     <property>
-        <name>mapred.map.tasks</name>
-        <value>10</value>
-        <description>The default number of map tasks per job. Ignored when mapred.job.tracker is "local".</description>
+        <name>mapreduce.job.maps</name>
+        <value>15</value>
+        <description>v3与v2name不一样，The default number of map tasks per job. Ignored when mapred.job.tracker is "local".</description>
+    </property>
+    <property>
+        <name>mapreduce.job.reduces</name>
+        <value>15</value>
+        <description>v3与v2name不一样，The default number of reduce tasks per job. Typically set to 99% of the cluster's reduce capacity,
+            so that if a node fails the reduces can still be executed in a single wave. Ignored when mapred.job.tracker
+            is "local".
+        </description>
     </property>
     <property>
         <name>yarn.app.mapreduce.am.env</name>
