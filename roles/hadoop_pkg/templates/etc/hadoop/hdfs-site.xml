@@ -3,4 +3,21 @@
         <name>dfs.replication</name>
         <value>3</value>
     </property>
+    <property>
+        <name>dfs.client.read.shortcircuit</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.domain.socket.path</name>
+        <value>/var/lib/hadoop-hdfs/dn_socket</value>
+        <description>make sure the directory of the path present is need</description>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>
+            /mnt/sdb,
+            /mnt/sdc,
+            /mnt/sdd
+        </value>
+    </property>
 </configuration>
