@@ -1,0 +1,20 @@
+---
+
+# RHEL/CentOS 在 6.3 版本以后引入了一套新的系统调优工具 tuned/tuned-adm，其中 tuned 是服务端程序，用来监控和收集系统各个组件的数据，并依据数据提供的信息动态调整系统设置，达到动态优化系统的目的
+- name: Disable Redhat tuned service
+  systemd:
+    name: tuned
+    state: stopped
+    enabled: no
+
+# Disabling Transparent Hugepages (THP)
+# top and other system monitoring tools show a large percentage of the CPU usage classified as "system CPU". If system CPU usage is 30% or more of the total CPU usage, your system may be experiencing this issue.
+# TODO
+
+- name: ulimit file descriptors
+  pam_limits:
+    domain: "*"
+    limit_type: "-"
+    limit_item: nofile
+    value: 64000
+
