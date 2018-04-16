@@ -18,4 +18,21 @@
         <description>Ratio between virtual memory to physical memory when setting memory limits for containers
         </description>
     </property>
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+        <description>
+            开启日志聚集功能，任务执行完之后，将日志文件自动上传到文件系统（如HDFS文件系统），
+            否则通过namenode1:8088页面查看日志文件的时候，会报错
+            "Aggregation is not enabled. Try the nodemanager at namenode1:54951"
+        </description>
+    </property>
+    <property>
+        <name>yarn.log-aggregation.retain-seconds</name>
+        <value>259200</value>
+        <description>
+            日志文件保存在文件系统（如HDFS文件系统）的最长时间，默认值是-1，即永久有效。
+            这里配置的值是：7天 = 3600 * 24 * 3 = 259200
+        </description>
+    </property>
 </configuration>
