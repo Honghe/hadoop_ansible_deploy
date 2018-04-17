@@ -3,16 +3,17 @@
         <name>mapreduce.framework.name</name>
         <value>yarn</value>
     </property>
-    <property>
-        <name>mapreduce.tasktracker.map.tasks.maximum</name>
-        <value>15</value>
-        <description>The maximum number of map tasks that will be run simultaneously by a task tracker.</description>
-    </property>
-    <property>
-        <name>mapreduce.tasktracker.reduce.tasks.maximum</name>
-        <value>15</value>
-        <description>The maximum number of reduce tasks that will be run simultaneously by a task tracker.</description>
-    </property>
+    <!-- These properties no longer exist in YARN. -->
+    <!--<property>-->
+        <!--<name>mapreduce.tasktracker.map.tasks.maximum</name>-->
+        <!--<value>3</value>-->
+        <!--<description>The maximum number of map tasks that will be run simultaneously by a task tracker.</description>-->
+    <!--</property>-->
+    <!--<property>-->
+        <!--<name>mapreduce.tasktracker.reduce.tasks.maximum</name>-->
+        <!--<value>3</value>-->
+        <!--<description>The maximum number of reduce tasks that will be run simultaneously by a task tracker.</description>-->
+    <!--</property>-->
     <property>
         <name>mapreduce.job.maps</name>
         <value>15</value>
